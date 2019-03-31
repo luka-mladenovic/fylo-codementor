@@ -32,7 +32,7 @@ module.exports = {
   plugins: [
     new CleanWebpackPlugin(),
     new MiniCssExtractPlugin({
-        filename: '[name].[chunkhash].css'
+        filename: '[name].css'
     }),
   ]
 };
