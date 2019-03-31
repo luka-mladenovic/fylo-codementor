@@ -8,7 +8,7 @@ module.exports = {
   entry: ['./src/styles/main.scss'],
   output: {
     path: path.resolve(__dirname, './dist'),
-    filename: '[name].[chunkhash].js'
+    filename: '[name].js'
   },
   module: {
     rules: [
