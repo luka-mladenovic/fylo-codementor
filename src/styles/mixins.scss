@@ -2,6 +2,10 @@
 @mixin section {
     padding: 3em;
     box-sizing: border-box;
+
+    @media (max-width: $breakpoint-tablet)  {
+        padding: 2em;
+    }
 }
 
 @mixin shadow-box {

@@ -21,9 +21,16 @@ h1, h2, h3, h4, h5 {
 
 h2 {
     font-size: 3em;
+    @media (max-width: $breakpoint-tablet)  {
+        font-size: 2em;
+    }
+
 }
 h3 {
     font-size: 2.15em;
+    @media (max-width: $breakpoint-tablet)  {
+        font-size: 1.5em;
+    }
 }
 
 a {
@@ -33,6 +40,7 @@ a {
 
 p {
     line-height: 150%;
+    font-size: 14px;
 }
 
 .logo {
@@ -41,8 +49,8 @@ p {
 
 .button,
 input[type=submit] {
-
     @include radius-large;
+
     display: inline-block;
     background: linear-gradient(to right, #65E2D9 , #339ECC);
     padding: 1.1em 6em;
@@ -54,6 +62,7 @@ input[type=submit] {
 
 header {
     @include section;
+
     background: $background-color-header url(../images/bg-curvy-desktop.svg) 0 100% no-repeat;
     background-size: 100% auto;
 
@@ -68,6 +77,10 @@ nav {
     a {
         display: inline-block;
         margin-left: 40px;
+
+        @media (max-width: $breakpoint-mobile)  {
+            margin-left: 1em;
+        }
     }
 }
 
@@ -86,8 +99,22 @@ section {
     margin: 0em auto;
 }
 
+@media (max-width: $breakpoint-tablet)  {
+    body {
+        font-size: 80%;
+    }
+
+    h1, h2, h3, h4, h5 {
+        line-height: 120%;
+    }
+}
+
 section.intro {
     @include section;
+
+    box-sizing: initial;
+    text-align: center;
+    max-width: $max-width / 2;
 
     h1 {
         font-size: 3em;
@@ -99,17 +126,40 @@ section.intro {
         padding: 0 1em;
     }
 
-    text-align: center;
-    max-width: $max-width / 2;
+    @media (max-width: $breakpoint-tablet)  {
+        img {
+            max-width: 90%;
+        }
+
+        h1 {
+            font-size: 2.5em;
+        }
+
+        p {
+            font-size: em(18);
+        }
+    }
+
+    @media (max-width: $breakpoint-mobile)  {
+        h1 {
+            font-size: 2em;
+        }
+
+        p {
+            font-size: em(16);
+        }
+    }
 }
 
 section.features {
+    @include section;
 
     justify-items: center;
     display: grid;
     max-width: 1200px;
     grid-template-columns: repeat(2, .5fr);
     grid-row-gap: 3em;
+    margin: 4em auto;
 
     h4 {
         font-size: em(20);
@@ -122,33 +172,11 @@ section.features {
             max-height: 60px;
         }
     }
-}
 
-.icon {
-    background: transparent url(../images/icon-location.svg) 0 50% no-repeat;
-    padding-left: 30px;
-
-    &.location {
-        background-image: url(../images/icon-location.svg);
-        background-position: 0 4px;
-    }
-    &.phone {
-        background-image: url(../images/icon-phone.svg);
-    }
-    &.email {
-        background-image: url(../images/icon-email.svg);
-    }
-    &.arrow {
-        background-image: url(../images/icon-arrow.svg);
-    }
-
-    &.right {
-        background-position: 100% 50%;
-        padding-right: 30px;
-        padding-left: 0;
+    @media (max-width: $breakpoint-small)  {
+        grid-template-columns: 1fr;
     }
 }
-
 
 section.how-it-works {
     @include section;
@@ -177,16 +205,27 @@ section.how-it-works {
     a {
         margin-top: 5px;
         font-size: 16px;
-     }
+    }
+
+    @media (max-width: $breakpoint-mobile)  {
+        grid-template-columns: 1fr;
+    }
+
+    @media (max-width: $breakpoint-tablet)  {
+         h2 {
+            line-height: 120%;
+        }
+    }
 }
 
 section.testimonials {
     @include section;
     @include radius-tiny;
+
+    margin: 4em auto 8em;
     display: grid;
     max-width: $max-width;
     justify-content: space-evenly;
-    // grid-template-columns: repeat(3,minmax(min-content, 360px));
     grid-template-columns: repeat(3,auto);
     grid-gap: 2.5em;
 
@@ -249,11 +288,16 @@ section.testimonials {
             }
         }
     }
+
+    @media (max-width: $breakpoint-mobile)  {
+        grid-template-columns: auto;
+    }
 }
 
 section.early-access {
     @include shadow-box;
     @include radius-small;
+
     max-width: $max-width / 2;
     margin-bottom: -7em;
     text-align: center;
@@ -268,6 +312,94 @@ section.early-access {
     h3 {
         margin-bottom: 0;
     }
+
+    @media (max-width: $breakpoint-mobile)  {
+        padding: 1em 3em;
+    }
+}
+
+footer {
+    padding-top: 8em;
+    padding-bottom: 2em;
+    background: $background-color-footer;
+
+    section {
+        @include section;
+        margin: 0 auto;
+        max-width: $max-width;
+
+        .columns {
+            margin-top: 2em;
+            display: grid;
+            grid-gap: 4em;
+            grid-template-columns: 0.6fr 0.2fr 0.2fr;
+
+            @media (max-width: $breakpoint-mobile)  {
+                grid-template-columns: auto;
+            }
+
+        }
+
+        .links {
+            display: grid;
+            font-size: 16px;
+            grid-gap: 20px;
+            grid-template-columns: auto auto;
+
+            @media (max-width: $breakpoint-mobile)  {
+                grid-template-columns: auto;
+                grid-gap: 20px;
+            }
+        }
+
+        .contact {
+            span {
+                display: block;
+                margin-bottom: 20px;
+            }
+        }
+    }
+
+    @media (max-width: $breakpoint-mobile)  {
+        padding-bottom: 0;
+    }
+}
+
+.icon {
+    background: transparent url(../images/icon-location.svg) 0 50% no-repeat;
+    padding-left: 30px;
+
+    &.location {
+        background-image: url(../images/icon-location.svg);
+        background-position: 0 4px;
+    }
+    &.phone {
+        background-image: url(../images/icon-phone.svg);
+    }
+    &.email {
+        background-image: url(../images/icon-email.svg);
+    }
+    &.arrow {
+        background-image: url(../images/icon-arrow.svg);
+    }
+
+    &.right {
+        background-position: 100% 50%;
+        padding-right: 30px;
+        padding-left: 0;
+    }
+}
+
+form {
+    margin: 1.5em 0;
+    font-size: 13px;
+    display: grid;
+    grid-template-columns: 1fr min-content;
+    grid-gap: 2em;
+
+    @media (max-width: $breakpoint-mobile)  {
+        grid-template-columns: 1fr;
+    }
 }
 
 ::placeholder {
@@ -279,12 +411,21 @@ section.early-access {
   color: red;
 }
 
-form {
-    margin: 1.5em 0;
-    font-size: 13px;
-    display: grid;
-    grid-template-columns: 1fr min-content;
-    grid-gap: 2em;
+input {
+    @include radius-large;
+
+    border: none;
+    padding: 12px 20px !important;
+    color: #181F2A;
+    font-size: inherit;
+}
+
+input[type=submit] {
+    color: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    margin: 0;
+    font-size: inherit;
 }
 
 .sign-in {
@@ -304,42 +445,4 @@ form {
     color: $accented-color;
     padding-bottom: 2px;
     border-bottom: 1px solid $accented-color;
-}
-
-footer {
-    > section {
-        @include section;
-        margin: 0 auto;
-        max-width: $max-width;
-
-        .columns {
-            display: grid;
-            grid-gap: 2em;
-            grid-template-columns: 1fr 200px 200px 200px;
-        }
-
-        .links {
-            display: grid;
-            grid-template-columns: auto auto;
-        }
-    }
-
-    background: $background-color-footer;
-}
-
-
-input {
-    @include radius-large;
-    border: none;
-    padding: 12px 20px !important;
-    color: #181F2A;
-    font-size: inherit;
-}
-
-input[type=submit] {
-    color: inherit;
-    font-weight: 700;
-    cursor: pointer;
-    margin: 0;
-    font-size: inherit;
 }
