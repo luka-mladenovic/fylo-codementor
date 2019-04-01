@@ -1,0 +1,28 @@
+
+@mixin section {
+    padding: 3em;
+    box-sizing: border-box;
+}
+
+@mixin shadow-box {
+    background: $background-color-header;
+    -webkit-box-shadow: 8px 8px 10px 0px rgba(0,0,0,0.1);
+    -moz-box-shadow: 8px 8px 10px 0px rgba(0,0,0,0.1);
+    box-shadow: 8px 8px 10px 0px rgba(0,0,0,0.1);
+}
+
+@mixin radius-large {
+    -webkit-border-radius: 25px;
+    -moz-border-radius: 25px;
+    border-radius: 25px;
+}
+@mixin radius-small {
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+    border-radius: 8px;
+}
+@mixin radius-tiny {
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
